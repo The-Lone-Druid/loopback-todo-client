@@ -1,0 +1,40 @@
+{
+  "todos": [
+    {
+      "id": 0,
+      "title": "Walk the dog",
+      "category": "task",
+      "isComplete": false
+    },
+    {
+      "id": 1,
+      "title": "Walk the dog",
+      "category": "event",
+      "isComplete": false
+    },
+    {
+      "id": 2,
+      "title": "Walk the dog",
+      "category": "goal",
+      "isComplete": false
+    },
+    {
+      "id": 0,
+      "title": "Walk the dog",
+      "category": "task",
+      "isComplete": true
+    },
+    {
+      "id": 1,
+      "title": "Walk the dog",
+      "category": "event",
+      "isComplete": true
+    },
+    {
+      "id": 2,
+      "title": "Walk the dog",
+      "category": "goal",
+      "isComplete": true
+    }
+  ]
+}

@@ -1,7 +1,5 @@
 # Getting Started with Create React App
 
- node ./node_modules/@rtk-query/codegen-openapi/lib/bin/cli.js openapi-config.ts
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
