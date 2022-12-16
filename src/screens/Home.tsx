@@ -35,6 +35,7 @@ const Home = (props: Props) => {
     // get inprogress filtered todos
     getInProgressTodos({
       filter: JSON.stringify({
+        order: "id DESC",
         where: {
           isComplete: false
         }
@@ -45,6 +46,7 @@ const Home = (props: Props) => {
     // get completed filtered todos
     getCompletedTodos({
       filter: JSON.stringify({
+        order: "id DESC",
         where: {
           isComplete: true
         }
