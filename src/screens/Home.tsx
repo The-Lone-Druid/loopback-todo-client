@@ -25,7 +25,7 @@ const Home = (props: Props) => {
   const navigate = useNavigate();
   const [getInProgressTodos, inProgressTodosResponse] = useGetTodosMutation();
   const [getCompletedTodos, completedTodoResponse] = useGetTodosMutation();
-  const [completedCollapse, setCompletedCollapse] = React.useState(false);
+  const [completedCollapse, setCompletedCollapse] = React.useState(true);
   const [loaderMessage, setLoaderMessage] = React.useState("Loading...");
   // todo status update api hook
   const [toggleTodoStatus, toggleTodoStatusResponse] =
