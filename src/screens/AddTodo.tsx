@@ -26,7 +26,8 @@ const AddTodo = (props: Props) => {
     initialValues: {
       title: "",
       category: "",
-      description: ""
+      description: "",
+      isComplete: false
     },
     validationSchema: TodoSchema,
     onSubmit: (values) => {
@@ -52,6 +53,7 @@ const AddTodo = (props: Props) => {
           <div className="flex items-center flex-col gap-[20px]">
             <TextField
               id="title"
+              name="title"
               label="Title"
               value={addTodoFormik.values.title}
               onChange={addTodoFormik.handleChange}
@@ -100,6 +102,7 @@ const AddTodo = (props: Props) => {
             </div>
             <TextField
               id="description"
+              name="description"
               label="Description"
               value={addTodoFormik.values.description}
               onChange={addTodoFormik.handleChange}

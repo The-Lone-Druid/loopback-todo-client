@@ -51,9 +51,10 @@ const injectedRtkApi = api.injectEndpoints({
         params: { where: queryArg.where },
       }),
     }),
-    getTodos: build.query<GetTodosApiResponse, GetTodosApiArg>({
+    getTodos: build.mutation<GetTodosApiResponse, GetTodosApiArg>({
       query: (queryArg) => ({
         url: `/todos`,
+        method: "GET",
         params: { filter: queryArg.filter },
       }),
     }),
@@ -107,7 +108,7 @@ export type LoopbackCount = {
 export type Todo = {
   id?: number;
   title: string;
-  isComplete?: boolean;
+  isComplete: boolean;
   category: string;
   [key: string]: any;
 };
@@ -121,23 +122,23 @@ export type TodoPartial = {
 export type TodoWithRelations = {
   id?: number;
   title: string;
-  isComplete?: boolean;
+  isComplete: boolean;
   category: string;
   [key: string]: any;
 };
 export type NewTodo = {
   title: string;
-  isComplete?: boolean;
+  isComplete: boolean;
   category: string;
   [key: string]: any;
 };
 export const {
-  useGetTodosCountQuery,
+  useLazyGetTodosCountQuery,
   usePutTodosByIdMutation,
   usePatchTodosByIdMutation,
-  useGetTodosByIdQuery,
+  useLazyGetTodosByIdQuery,
   useDeleteTodosByIdMutation,
   usePostTodosMutation,
   usePatchTodosMutation,
-  useGetTodosQuery,
+  useGetTodosMutation,
 } = injectedRtkApi;

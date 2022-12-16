@@ -4,9 +4,13 @@ import { NewTodo } from "../services/todoApi";
 
 type Props = {
   todo: NewTodo;
+  toggleTodoStatusAsync: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    todo: NewTodo
+  ) => void;
 };
 
-const TodoItem = ({ todo }: Props) => {
+const TodoItem = ({ todo, toggleTodoStatusAsync }: Props) => {
   return (
     <div className="p-[16px] flex items-center justify-between bg-white">
       <div className={`flex items-center ${todo.isComplete && "opacity-40"}`}>
@@ -31,7 +35,9 @@ const TodoItem = ({ todo }: Props) => {
           type="checkbox"
           value=""
           checked={todo.isComplete}
-          onChange={() => {}}
+          onChange={(e) => {
+            toggleTodoStatusAsync(e, todo);
+          }}
           id="flexCheckDefault"
           className="h-[20px] w-[20px] cursor-pointer"
         />

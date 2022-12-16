@@ -14,10 +14,18 @@ const config: ConfigFile = {
       exportName: "todoApi"
     }
   },
-  hooks: true,
+  hooks: {
+    lazyQueries: true,
+    mutations: true,
+    queries: false
+  },
   endpointOverrides: [
     {
       pattern: "getPing",
+      type: "mutation"
+    },
+    {
+      pattern: "getTodos",
       type: "mutation"
     }
   ]
