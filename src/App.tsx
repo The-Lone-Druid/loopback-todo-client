@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import AddTodo from "./screens/AddTodo";
+import Loader from "./components/Loader";
 
 function App() {
   return (

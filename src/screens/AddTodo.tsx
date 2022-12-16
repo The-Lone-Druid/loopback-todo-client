@@ -10,6 +10,7 @@ import TodoHeader from "../components/TodoHeader";
 import * as Yup from "yup";
 import { NewTodo, usePostTodosMutation } from "../services/todoApi";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 type Props = {};
 
@@ -21,6 +22,7 @@ const TodoSchema = Yup.object({
 
 const AddTodo = (props: Props) => {
   const [addTodo, addTodoResponse] = usePostTodosMutation();
+  const [loaderMessage, setLoaderMessage] = React.useState("Loading...");
   const navigate = useNavigate();
   const addTodoFormik = useFormik({
     initialValues: {
@@ -31,6 +33,7 @@ const AddTodo = (props: Props) => {
     },
     validationSchema: TodoSchema,
     onSubmit: (values) => {
+      setLoaderMessage("Saving...");
       addTodo({
         newTodo: values
       });
@@ -133,6 +136,8 @@ const AddTodo = (props: Props) => {
           Save
         </Button>
       </div>
+      {/* Loader */}
+      {addTodoResponse.isLoading ? <Loader message={loaderMessage} /> : null}
     </div>
   );
 };

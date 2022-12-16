@@ -11,6 +11,7 @@ import TodoItem from "../components/TodoItem";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { PatchTodosByIdApiArg } from "../services/todoApi";
+import Loader from "../components/Loader";
 
 type Props = {};
 
@@ -25,6 +26,7 @@ const Home = (props: Props) => {
   const [getInProgressTodos, inProgressTodosResponse] = useGetTodosMutation();
   const [getCompletedTodos, completedTodoResponse] = useGetTodosMutation();
   const [completedCollapse, setCompletedCollapse] = React.useState(false);
+  const [loaderMessage, setLoaderMessage] = React.useState("Loading...");
   // todo status update api hook
   const [toggleTodoStatus, toggleTodoStatusResponse] =
     usePatchTodosByIdMutation();
@@ -37,6 +39,8 @@ const Home = (props: Props) => {
           isComplete: false
         }
       })
+    }).then(() => {
+      setLoaderMessage("Fetching todos...");
     });
     // get completed filtered todos
     getCompletedTodos({
@@ -45,6 +49,8 @@ const Home = (props: Props) => {
           isComplete: true
         }
       })
+    }).then(() => {
+      setLoaderMessage("Fetching todos...");
     });
   }, [toggleTodoStatusResponse.isSuccess]);
 
@@ -72,6 +78,7 @@ const Home = (props: Props) => {
         isComplete: e.currentTarget.checked
       }
     };
+    setLoaderMessage("Updating todos...");
     toggleTodoStatus(reqPayload);
   };
 
@@ -148,6 +155,12 @@ const Home = (props: Props) => {
           Add New Todo
         </Button>
       </div>
+      {/* Loader */}
+      {inProgressTodosResponse.isLoading ||
+      completedTodoResponse.isLoading ||
+      toggleTodoStatusResponse.isLoading ? (
+        <Loader message={loaderMessage} />
+      ) : null}
     </div>
   );
 };
